@@ -9,9 +9,12 @@
 </div>
 <br>
 <div align="center">
-<table border="1">
+<table border="1" id="table1">
 	<tr>
-	<td colspan="4">사진</td></tr>
+		<td colspan="4" align="center">
+		<div style="border: solid black 2px; width:50%;height:500px;" id="map" ></div>
+		</td>
+	</tr>
 	<tr>
 	<td colspan="2">시설명</td>
 	<td colspan="2">${m.facility}</td>
@@ -42,7 +45,7 @@
 </section>
 <c:import url="/WEB-INF/view/include/bottom.jsp" />
 
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=${keyValue}"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=524a2522168af43f6aa3f54379d9762f"></script>
 <script>
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = { 
@@ -63,7 +66,7 @@ var marker = new kakao.maps.Marker({
 // 마커가 지도 위에 표시되도록 설정합니다
 marker.setMap(map);
 
-var iwContent = '<div style="padding:5px;"> ${m.station} <br><a href="https://map.kakao.com/link/map/${m.station} ,${m.latitude}, ${m.longitude}" style="color:blue" target="_blank">큰지도보기</a> <a href="https://map.kakao.com/link/to/${m.station},${m.latitude}, ${m.longitude}" style="color:blue" target="_blank">길찾기</a></div>', 
+var iwContent = '<div style="padding:5px;"> ${m.facility} <br><a href="https://map.kakao.com/link/map/${m.facility} ,${m.latitude}, ${m.longitude}" style="color:blue" target="_blank">큰지도보기</a> <a href="https://map.kakao.com/link/to/${m.facility},${m.latitude}, ${m.longitude}" style="color:blue" target="_blank">길찾기</a></div>', 
     iwPosition = new kakao.maps.LatLng(${m.latitude}, ${m.longitude}); //인포윈도우 표시 위치입니다
 
 // 인포윈도우를 생성합니다

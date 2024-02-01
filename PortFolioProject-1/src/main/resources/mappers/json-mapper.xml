@@ -32,4 +32,11 @@ VALUES (
  
  </select>
  
+  <select id="getJson" parameterType="com.project.json.JsonVO"
+ 							resultType="com.project.json.JsonVO">
+ 							
+ 		select * from campinfo where idx=#{idx}
+ 
+ </select>
+ 
  </mapper>

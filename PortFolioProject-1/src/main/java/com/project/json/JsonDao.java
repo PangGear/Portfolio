@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Mapper;
 public interface JsonDao {
 
 	List<JsonVO> getJsonList(JsonVO vo);
+	JsonVO getJson(JsonVO vo);
 	
 	void jsonInsert(JsonVO vo);
 }

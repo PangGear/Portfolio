@@ -112,6 +112,14 @@ public class JsonController {
 		
 		return "/camp/getCampList";
 	}
+	
+	@GetMapping("/getJson.do")
+	String getJson(Model model, JsonVO vo) {
+		
+		model.addAttribute("m",service.getJson(vo));
+		
+		return "/camp/getCamp";
+	}
     
    
 }

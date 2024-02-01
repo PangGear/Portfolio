@@ -22,4 +22,10 @@ public class JsonServiceImpl implements JsonService{
 		
 		dao.jsonInsert(vo);
 	}
+
+	@Override
+	public JsonVO getJson(JsonVO vo) {
+		
+		return dao.getJson(vo);
+	}
 }

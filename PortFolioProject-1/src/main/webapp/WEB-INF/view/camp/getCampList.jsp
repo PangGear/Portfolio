@@ -55,7 +55,7 @@
     <c:forEach var="m" items="${li}">  		
         var position = {
             content: ' <div style="padding:5px;"> ' +
-                     '<a href="/DataOne.do?idx=${m.idx}" style="color:blue" >${m.facility}</a></div>',                   
+                     '<a href="/getJson.do?idx=${m.idx}" style="color:blue" >${m.facility}</a></div>',                   
             latlng: new kakao.maps.LatLng(${m.latitude}, ${m.longitude})  
         };	
         positions.push(position);
