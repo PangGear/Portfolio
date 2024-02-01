@@ -1,0 +1,25 @@
+package com.project.json;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class JsonServiceImpl implements JsonService{
+
+	@Autowired
+	private JsonDao dao;
+	
+	@Override
+	public List<JsonVO> getJsonList(JsonVO vo) {
+		
+		return dao.getJsonList(vo);
+	}
+
+	@Override
+	public void jsonInsert(JsonVO vo) {
+		
+		dao.jsonInsert(vo);
+	}
+}

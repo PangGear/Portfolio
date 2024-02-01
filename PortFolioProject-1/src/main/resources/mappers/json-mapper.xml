@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.project.json.JsonDao">
+ 
+ <insert id="jsonInsert" parameterType="com.project.json.JsonVO">
+
+INSERT INTO CAMPINFO (idx, facility, roadAddress, latitude, longitude, telephone, facilityInfo, facilityFeature, homepage, facilElectric, facilHotwater, facilWifi, facilFirewood, facilMarket)
+VALUES (
+	seq_campinfo.nextval,
+    #{facility}, 
+    #{roadAddress}, 
+    #{latitude}, 
+    #{longitude}, 
+    #{telephone}, 
+    #{facilityInfo}, 
+    #{facilityFeature}, 
+    #{homepage}, 
+    #{facilElectric}, 
+    #{facilHotwater}, 
+    #{facilWifi}, 
+    #{facilFirewood}, 
+    #{facilMarket}
+)
+ 
+ </insert>
+ 
+ <select id="getJsonList" parameterType="com.project.json.JsonVO"
+ 							resultType="com.project.json.JsonVO">
+ 							
+ 		select * from campinfo
+ 
+ </select>
+ 
+ </mapper>
