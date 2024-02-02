@@ -28,14 +28,45 @@ VALUES (
  <select id="getJsonList" parameterType="com.project.json.JsonVO"
  							resultType="com.project.json.JsonVO">
  							
- 		select * from campinfo
- 
+   <![CDATA[
+	  select rownum, K.* 
+	   from 
+	     (select rownum as rnum, M.*
+	      from (select * from campinfo 	      
+	          WHERE 1=1
+	         ]]>
+	         	
+			  <if test="ch1 == 'name' ">
+			    and name like '%' || #{ch2} || '%' 	  
+			  </if>
+			  
+			  <if test="ch1 == 'memo' ">
+			  and memo like  '%' || #{ch2} || '%' 	   
+			  </if>	         
+	      
+	         <![CDATA[
+	       order by idx desc) M
+	      where rownum <= #{start}+10) K
+	  where RNUM >= #{start}
+   ]]>
+   
  </select>
  
   <select id="getJson" parameterType="com.project.json.JsonVO"
  							resultType="com.project.json.JsonVO">
  							
  		select * from campinfo where idx=#{idx}
+ 
+ </select>
+ 
+ <select id="totalCount" resultType="int" 
+ 						parameterType="com.project.json.JsonVO">
+ 							
+ 	select count(*) from campinfo where 1=1
+	
+	  <if test="ch1 == 'roadAddress' ">
+	    and roadAddress like  '%' || #{ch2} || '%'
+	  </if>
  
  </select>
  

@@ -11,4 +11,6 @@ public interface JsonDao {
 	JsonVO getJson(JsonVO vo);
 	
 	void jsonInsert(JsonVO vo);
+	
+	int totalCount();
 }

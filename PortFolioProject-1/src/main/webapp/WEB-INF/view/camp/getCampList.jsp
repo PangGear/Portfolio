@@ -10,7 +10,23 @@
 <br>
 <div align="center">
 
-<div id="map" style="width:95%;height:600px; border-top:2px solid blue; border-bottom:2px solid red; border-left:2px solid chartreuse; border-right:2px solid yellow; padding:10px;"></div>
+<div id="map" style="width:80%;height:600px; padding:10px;"></div>
+
+<form action=getCampList.do>
+<select name=ch1>
+  <option  value="name" > 경기 </option>
+  <option  value="name" > 인천 </option>
+  <option  value="name" > 충청북도 </option>
+  <option  value="name" > 충청남도 </option>
+  <option  value="name" > 강원도 </option>
+  <option  value="name" > 경상북도 </option>
+  <option  value="name" > 경상남도 </option>
+  <option  value="name" > 전라북도 </option>
+  <option  value="name" > 전라남도 </option>
+</select>
+<input  type=text  name=ch2>
+<input  type=submit value="검색하기" >
+</form>
 
 <table border="1">
 <tr align="center">
@@ -36,6 +52,38 @@
 </tr>
 </c:forEach>
 </table>
+<br>
+
+<a href=getJsonList.do&start=1&ch1=${ch1}&ch2=${ch2}>처음페이지</a> &emsp;
+
+<c:if test="${listStartPage > pageListSize}">
+   <c:set var="start"  value="${(listStartPage - pageListSize -1) * pageSize  + 1}" />
+   <a href=getJsonList.do&start=${start-pageSize}&ch1=${ch1}&ch2=${ch2}>이전</a> &emsp;
+</c:if>
+
+<c:if test="${start == 1}">
+이전 &emsp;
+</c:if>
+
+<c:forEach var="i" begin="${listStartPage}"  end="${listEndPage}"  >
+  <c:set var="start"  value="${(i-1) * pageSize + 1}" />
+  <c:if test="${i <= totalPage}">
+    <a href=getJsonList.do&start=${start}&ch1=${ch1}&ch2=${ch2}>[ ${i}]</a>&nbsp;
+  </c:if>
+</c:forEach>
+
+
+<c:if test="${listEndPage < totalPage}">
+<c:set  var="start" value="${listEndPage * pageSize + 1}" />
+   <a href=getJsonList.do&start=${start+pageSize}&ch1=${ch1}&ch2=${ch2}>다음</a>&emsp;
+</c:if>
+<c:if test="${listEndPage >= totalPage}">
+   다음&emsp;
+</c:if>
+
+<c:set var="endPage"  value="${( totalPage - 1) * pageSize + 1}" />
+<a href=getJsonList.do&start=${endPage}&ch1=${ch1}&ch2=${ch2}>마지막페이지</a>
+
 <br>
 </div>
 </section>

@@ -20,8 +20,8 @@
 </header>
 <nav>
 &emsp;&emsp;<a href=getBoardList.do>게시판목록</a>
-<!-- 
-&emsp;&emsp;<a href=jsonInsert.do>공공데이터 insert</a> -->
+
+&emsp;&emsp;<a href=jsonInsert.do>공공데이터 insert</a>
 &emsp;&emsp;<a href=getJsonList.do>캠핑장List</a>
 
 &emsp;&emsp;<a href=memberInsert.do>회원가입</a>

@@ -28,4 +28,9 @@ public class JsonServiceImpl implements JsonService{
 		
 		return dao.getJson(vo);
 	}
+
+	@Override
+	public int totalCount() {
+		return dao.totalCount();
+	}
 }

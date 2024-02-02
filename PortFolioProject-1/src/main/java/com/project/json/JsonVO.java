@@ -21,4 +21,11 @@ public class JsonVO {
 	private String facilWifi;
 	private String facilFirewood;
 	private String facilMarket;
+	
+	private String ch1;
+	private String ch2;
+	
+	private int pageSize;
+	private int start;
+	private int totalCount;
 }

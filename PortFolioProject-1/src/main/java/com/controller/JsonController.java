@@ -108,6 +108,43 @@ public class JsonController {
 	@GetMapping("/getJsonList.do")
 	String getJsonList(Model model, JsonVO vo) {
 		
+		int tc = service.totalCount();
+		
+	    int pagesize = 10;
+	    int pageListSize = 10 ;
+	    int totalPage = (int) Math.ceil((double) tc / pagesize);
+		
+		int start;
+		if (vo.getStart() == 0) {
+			start = 1;			
+		}else {
+			start = vo.getStart();			
+		}
+		vo.setCh2(vo.getCh2());
+		int nowPage = start / pagesize + 1;
+	      
+		int listStartPage = (nowPage - 1) / pageListSize * pageListSize + 1;
+		int listEndPage = listStartPage + pageListSize - 1 ;
+		
+		vo.setPageSize( pagesize );	
+		vo.setStart(start);
+		 
+		
+		model.addAttribute("li", service.getJsonList(vo));
+			
+		model.addAttribute("start", start);
+		model.addAttribute("tc", tc);
+		model.addAttribute("totalPage", totalPage);
+		model.addAttribute("nowPage", nowPage);
+		model.addAttribute("pageSize", pagesize);
+		model.addAttribute("pageListSize", pageListSize);
+	  
+		model.addAttribute("listStartPage", listStartPage);
+		model.addAttribute("listEndPage", listEndPage);
+		
+		model.addAttribute("ch1", vo.getCh1());
+		model.addAttribute("ch2", vo.getCh2());
+		
 		model.addAttribute("li",service.getJsonList(vo));
 		
 		return "/camp/getCampList";

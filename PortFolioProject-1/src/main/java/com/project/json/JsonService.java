@@ -8,4 +8,6 @@ public interface JsonService {
 	JsonVO getJson(JsonVO vo);
 	
 	void jsonInsert(JsonVO vo);
+	
+	int totalCount();
 }
