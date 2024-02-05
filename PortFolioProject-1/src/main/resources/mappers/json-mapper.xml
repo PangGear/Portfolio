@@ -36,14 +36,14 @@ VALUES (
 	          WHERE 1=1
 	         ]]>
 	         	
-			  <if test="ch1 == 'name' ">
-			    and name like '%' || #{ch2} || '%' 	  
+			  <if test="ch1 == 'facility' ">
+			    and facility like '%' || #{ch2} || '%' 	  
 			  </if>
 			  
-			  <if test="ch1 == 'memo' ">
-			  and memo like  '%' || #{ch2} || '%' 	   
-			  </if>	         
-	      
+			  <if test="ch1 == 'roadAddress' ">
+			    and roadAddress like '%' || #{ch2} || '%' 	  
+			  </if>
+
 	         <![CDATA[
 	       order by idx desc) M
 	      where rownum <= #{start}+10) K
@@ -64,9 +64,13 @@ VALUES (
  							
  	select count(*) from campinfo where 1=1
 	
-	  <if test="ch1 == 'roadAddress' ">
-	    and roadAddress like  '%' || #{ch2} || '%'
-	  </if>
+			  <if test="ch1 == 'facility' ">
+			    and facility like '%' || #{ch2} || '%' 	  
+			  </if>
+			  
+			  <if test="ch1 == 'roadAddress' ">
+			    and roadAddress like '%' || #{ch2} || '%' 	  
+			  </if>
  
  </select>
  

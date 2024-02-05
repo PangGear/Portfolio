@@ -128,9 +128,8 @@ public class JsonController {
 		
 		vo.setPageSize( pagesize );	
 		vo.setStart(start);
-		 
 		
-		model.addAttribute("li", service.getJsonList(vo));
+		model.addAttribute("li",service.getJsonList(vo));
 			
 		model.addAttribute("start", start);
 		model.addAttribute("tc", tc);
@@ -144,8 +143,6 @@ public class JsonController {
 		
 		model.addAttribute("ch1", vo.getCh1());
 		model.addAttribute("ch2", vo.getCh2());
-		
-		model.addAttribute("li",service.getJsonList(vo));
 		
 		return "/camp/getCampList";
 	}

@@ -12,20 +12,22 @@
 
 <div id="map" style="width:80%;height:600px; padding:10px;"></div>
 
-<form action=getCampList.do>
-<select name=ch1>
-  <option  value="name" > 경기 </option>
-  <option  value="name" > 인천 </option>
-  <option  value="name" > 충청북도 </option>
-  <option  value="name" > 충청남도 </option>
-  <option  value="name" > 강원도 </option>
-  <option  value="name" > 경상북도 </option>
-  <option  value="name" > 경상남도 </option>
-  <option  value="name" > 전라북도 </option>
-  <option  value="name" > 전라남도 </option>
-</select>
-<input  type=text  name=ch2>
-<input  type=submit value="검색하기" >
+1.페이지 사이즈 : ${pageSize} &emsp;&emsp;
+2.페이지 List사이즈(아래숫자갯수) : ${pageListSize}&emsp;&emsp;
+3.전체레코드 : ${tc}&emsp;&emsp;
+4.총페이지수 : ${totalPage}  <br>
+5.현재레코드 : ${start}&emsp;&emsp;
+6.현재페이지 : ${nowPage}&emsp;&emsp;
+7.가로하단 시작 :${listStartPage}&emsp;&emsp;
+8.가로 하단 마지막 : ${listEndPage}
+
+<form action="/getJsonList.do" method="get">
+    <select name="ch1">
+        <option value="facility">시설명</option>
+        <option value="roadAddress">주소</option>
+    </select>
+    <input type="text" name="ch2">
+    <input type="submit" value="검색하기">
 </form>
 
 <table border="1">
@@ -54,11 +56,11 @@
 </table>
 <br>
 
-<a href=getJsonList.do&start=1&ch1=${ch1}&ch2=${ch2}>처음페이지</a> &emsp;
+<a href=/getJsonList.do?start=1&ch1=${ch1}&ch2=${ch2}>처음페이지</a> &emsp;
 
 <c:if test="${listStartPage > pageListSize}">
    <c:set var="start"  value="${(listStartPage - pageListSize -1) * pageSize  + 1}" />
-   <a href=getJsonList.do&start=${start-pageSize}&ch1=${ch1}&ch2=${ch2}>이전</a> &emsp;
+   <a href=/getJsonList.do?start=${start-pageSize}&ch1=${ch1}&ch2=${ch2}>이전</a> &emsp;
 </c:if>
 
 <c:if test="${start == 1}">
@@ -68,21 +70,21 @@
 <c:forEach var="i" begin="${listStartPage}"  end="${listEndPage}"  >
   <c:set var="start"  value="${(i-1) * pageSize + 1}" />
   <c:if test="${i <= totalPage}">
-    <a href=getJsonList.do&start=${start}&ch1=${ch1}&ch2=${ch2}>[ ${i}]</a>&nbsp;
+    <a href=/getJsonList.do?start=${start}&ch1=${ch1}&ch2=${ch2}>[ ${i}]</a>&nbsp;
   </c:if>
 </c:forEach>
 
 
 <c:if test="${listEndPage < totalPage}">
 <c:set  var="start" value="${listEndPage * pageSize + 1}" />
-   <a href=getJsonList.do&start=${start+pageSize}&ch1=${ch1}&ch2=${ch2}>다음</a>&emsp;
+   <a href=/getJsonList.do?start=${start+pageSize}&ch1=${ch1}&ch2=${ch2}>다음</a>&emsp;
 </c:if>
 <c:if test="${listEndPage >= totalPage}">
    다음&emsp;
 </c:if>
 
-<c:set var="endPage"  value="${( totalPage - 1) * pageSize + 1}" />
-<a href=getJsonList.do&start=${endPage}&ch1=${ch1}&ch2=${ch2}>마지막페이지</a>
+<c:set var="endPage"  value="${(totalPage - 1) * pageSize + 1}" />
+<a href=/getJsonList.do?start=${endPage}&ch1=${ch1}&ch2=${ch2}>마지막페이지</a>
 
 <br>
 </div>
