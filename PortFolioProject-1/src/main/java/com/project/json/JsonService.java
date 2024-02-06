@@ -10,4 +10,5 @@ public interface JsonService {
 	void jsonInsert(JsonVO vo);
 	
 	int totalCount();
+	int cnt();
 }

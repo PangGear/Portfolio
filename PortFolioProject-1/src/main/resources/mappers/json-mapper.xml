@@ -74,4 +74,12 @@ VALUES (
  
  </select>
  
+	<update id="cnt" parameterType="int">
+	    <![CDATA[
+	    update campinfo
+	    set cnt = cnt + 1
+	    where idx = #{idx}
+	    ]]>
+	</update>
+ 
  </mapper>

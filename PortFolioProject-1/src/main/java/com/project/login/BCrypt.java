@@ -1,4 +1,4 @@
-package com.project.member;
+package com.project.login;
 
 // Copyright (c) 2006 Damien Miller <djm@mindrot.org>
 //

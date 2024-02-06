@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class JsonVO {
 
-	private String idx;
+	private int idx;
 	
 	private String facility;
 	private String roadAddress;
@@ -21,6 +21,8 @@ public class JsonVO {
 	private String facilWifi;
 	private String facilFirewood;
 	private String facilMarket;
+	
+	private int cnt;
 	
 	private String ch1;
 	private String ch2;

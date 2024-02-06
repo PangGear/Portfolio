@@ -12,15 +12,6 @@
 
 <div id="map" style="width:80%;height:600px; padding:10px;"></div>
 
-1.페이지 사이즈 : ${pageSize} &emsp;&emsp;
-2.페이지 List사이즈(아래숫자갯수) : ${pageListSize}&emsp;&emsp;
-3.전체레코드 : ${tc}&emsp;&emsp;
-4.총페이지수 : ${totalPage}  <br>
-5.현재레코드 : ${start}&emsp;&emsp;
-6.현재페이지 : ${nowPage}&emsp;&emsp;
-7.가로하단 시작 :${listStartPage}&emsp;&emsp;
-8.가로 하단 마지막 : ${listEndPage}
-
 <form action="/getJsonList.do" method="get">
     <select name="ch1">
         <option value="facility">시설명</option>
@@ -35,22 +26,20 @@
 <td>번호</td>
 <td>시설명</td>
 <td>주소</td>
-<td>위도</td>
-<td>경도</td>
 <td>전화번호</td>
 <td>시설소개</td>
 <td>시설특징</td>
+<td>조회수</td>
 </tr>
 <c:forEach items="${li}" var="m" varStatus="status">
 <tr>
 	<td>${status.count}</td>
-	<td>${m.facility}</td>
+	<td><a href="/getJson.do?idx=${m.idx}">${m.facility}</a></td>
 	<td>${m.roadAddress}</td>
-	<td>${m.latitude}</td>
-	<td>${m.longitude}</td>
 	<td>${m.telephone}</td>
 	<td>${m.facilityInfo}</td>
 	<td>${m.facilityFeature}</td>
+	<td>${m.cnt}</td>
 </tr>
 </c:forEach>
 </table>
@@ -59,7 +48,7 @@
 <a href=/getJsonList.do?start=1&ch1=${ch1}&ch2=${ch2}>처음페이지</a> &emsp;
 
 <c:if test="${listStartPage > pageListSize}">
-   <c:set var="start"  value="${(listStartPage - pageListSize -1) * pageSize  + 1}" />
+   <c:set var="start"  value="${(listStartPage-pageListSize-1)*pageSize+ 1}" />
    <a href=/getJsonList.do?start=${start-pageSize}&ch1=${ch1}&ch2=${ch2}>이전</a> &emsp;
 </c:if>
 
@@ -75,15 +64,15 @@
 </c:forEach>
 
 
-<c:if test="${listEndPage < totalPage}">
-<c:set  var="start" value="${listEndPage * pageSize + 1}" />
+<c:if test="${listEndPage<totalPage}">
+<c:set  var="start" value="${listEndPage*pageSize + 1}" />
    <a href=/getJsonList.do?start=${start+pageSize}&ch1=${ch1}&ch2=${ch2}>다음</a>&emsp;
 </c:if>
-<c:if test="${listEndPage >= totalPage}">
+<c:if test="${listEndPage>=totalPage}">
    다음&emsp;
 </c:if>
 
-<c:set var="endPage"  value="${(totalPage - 1) * pageSize + 1}" />
+<c:set var="endPage" value="${(totalPage-1)*pageSize+1}" />
 <a href=/getJsonList.do?start=${endPage}&ch1=${ch1}&ch2=${ch2}>마지막페이지</a>
 
 <br>

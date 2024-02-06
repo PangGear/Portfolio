@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.project.login.LoginDao">
+ 
+ <select id="getLoginList" parameterType="com.project.login.LoginVO"
+ 							resultType="com.project.login.LoginVO">
+
+ 	select *  from memberTBL where 1=1
+   	<if test="ch1=='name'">
+    and name like #{ch2} 
+   	</if>
+  	<if test="ch1=='roadAddress'">
+    and roadAddress like #{ch2} 
+   	</if>
+ 
+ </select>
+ 
+  <insert id="loginInsert" parameterType="com.project.login.LoginVO">
+   
+     insert  into memberTBL (username, password, name, postcode, roadAddress, detailAddress, tel ,role, registration)
+     values( seq_member.nextval,#{password},#{name},#{postcode},#{roadAddress},#{detailAddress},#{tel},#{role},sysdate)
+  
+  </insert>
+  
+ </mapper>

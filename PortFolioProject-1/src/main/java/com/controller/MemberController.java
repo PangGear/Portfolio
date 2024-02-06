@@ -6,9 +6,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.project.member.BCrypt;
-import com.project.member.MemberService;
-import com.project.member.MemberVO;
+import com.project.login.BCrypt;
+import com.project.login.LoginService;
+import com.project.login.LoginVO;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -16,12 +16,12 @@ import jakarta.servlet.http.HttpSession;
 public class MemberController {
 	
 	@Autowired
-	private MemberService service;
+	private LoginService service;
 	
 	@GetMapping("/getMemberList.do")
-	String getMemberList(Model model, MemberVO vo) {
+	String getMemberList(Model model, LoginVO vo) {
 		
-		model.addAttribute("li", service.getMemberList(vo));
+		model.addAttribute("li", service.getLoginList(vo));
 		
 		return "/member/getMemberList";
 	}
@@ -33,11 +33,11 @@ public class MemberController {
 	}
 	
 	@PostMapping("/memberInsert.do")
-	String memberInsert(MemberVO vo) {
+	String memberInsert(LoginVO vo) {
 		
-		String Bpwd = BCrypt.hashpw(vo.getBcrypt(), BCrypt.gensalt());
-		vo.setBcrypt(Bpwd);
-		service.memberInsert(vo);
+		String pwd = BCrypt.hashpw(vo.getPassword(), BCrypt.gensalt());
+		vo.setPassword(pwd);
+		service.loginInsert(vo);
 		
 		return "redirect:/getMemberList.do";
 	}
@@ -53,7 +53,7 @@ public class MemberController {
 //		MemberVO m = service.getLoginOne(vo);
 //		// System.out.println("===> m 확인: "+ m);
 //		
-//		if (m != null) {
+//		if (m!= null) {
 //			
 //			// System.out.println(" 암호 확인 : " + vo.getPwd()+":"+m.getPwd());
 //			
@@ -71,7 +71,6 @@ public class MemberController {
 //		} else {
 //			 return "/member/member_login.jsp";
 //		}		
-//		
 //	}
 
 
@@ -79,5 +78,11 @@ public class MemberController {
 	public  String MemberLogOut(HttpSession session ) {		
 		session.invalidate();
 		return "/member/member_login.jsp";		
+	}
+	
+	@GetMapping("accessDenied.do")
+	 String accessDenied() {		
+		System.out.println("===> accessDenied.do");
+	   return "/login/accessDenied.jsp";		
 	}
 }

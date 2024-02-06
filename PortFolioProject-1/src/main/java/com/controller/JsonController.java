@@ -151,6 +151,7 @@ public class JsonController {
 	String getJson(Model model, JsonVO vo) {
 		
 		model.addAttribute("m",service.getJson(vo));
+		service.cnt();
 		
 		return "/camp/getCamp";
 	}

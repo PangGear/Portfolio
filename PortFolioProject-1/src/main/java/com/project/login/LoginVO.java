@@ -1,20 +1,20 @@
-package com.project.member;
+package com.project.login;
 
 import lombok.Data;
 
 @Data
-public class MemberVO {
+public class LoginVO {
 
 	private int seq;
 	
-	private String memberid;
-	private String bcrypt;
+	private String username;
+	private String password;
+	private String role;
 	private String name;
 	private String postcode;
 	private String roadAddress;
 	private String detailAddress;
 	private String tel;
-	private String grade;
 	
 	private String ch1;
 	private String ch2;

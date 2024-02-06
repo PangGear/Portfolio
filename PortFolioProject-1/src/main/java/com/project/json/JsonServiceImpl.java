@@ -33,4 +33,10 @@ public class JsonServiceImpl implements JsonService{
 	public int totalCount() {
 		return dao.totalCount();
 	}
+
+	@Override
+	public int cnt() {
+		
+		return dao.cnt();
+	}
 }
