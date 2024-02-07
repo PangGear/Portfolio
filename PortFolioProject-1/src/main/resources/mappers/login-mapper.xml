@@ -6,21 +6,35 @@
  <select id="getLoginList" parameterType="com.project.login.LoginVO"
  							resultType="com.project.login.LoginVO">
 
- 	select *  from memberTBL where 1=1
+ 	select idx,username,password,postcode,roadAddress,
+ 	detailAddress,tel,role,name,registration
+ 	from LoginTBL where 1=1
    	<if test="ch1=='name'">
-    and name like #{ch2} 
+    and name like #{ch2}
    	</if>
   	<if test="ch1=='roadAddress'">
-    and roadAddress like #{ch2} 
+    and roadAddress like #{ch2}
    	</if>
+ 
+ </select>
+ 
+  <select id="getLogin" parameterType="com.project.login.LoginVO"
+ 							resultType="com.project.login.LoginVO">
+
+ 	select idx,username,password,postcode,roadAddress,
+ 	detailAddress,tel,role,name,registration
+ 	from LoginTBL 
+   	where username=#{username}
  
  </select>
  
   <insert id="loginInsert" parameterType="com.project.login.LoginVO">
    
-     insert  into memberTBL (username, password, name, postcode, roadAddress, detailAddress, tel ,role, registration)
-     values( seq_member.nextval,#{password},#{name},#{postcode},#{roadAddress},#{detailAddress},#{tel},#{role},sysdate)
-  
-  </insert>
-  
+        INSERT INTO LoginTBL (
+            idx, username, password, postcode, roadAddress, detailAddress, tel, role, name, registration
+        ) VALUES (
+            idx_sequence.nextval, #{username}, #{password}, #{postcode}, #{roadAddress}, #{detailAddress}, #{tel}, #{role}, #{name}, sysdate
+        )
+
+ </insert>
  </mapper>

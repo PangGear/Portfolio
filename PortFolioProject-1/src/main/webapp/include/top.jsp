@@ -25,7 +25,10 @@
 &emsp;&emsp;<a href=getJsonList.do>캠핑장List</a>
 
 &emsp;&emsp;<a href=memberInsert.do>회원가입</a>
-&emsp;&emsp;<a href=getMemberList.do>회원목록</a>
+&emsp;&emsp;<a href=getLoginList.do>회원목록</a>
+
+&emsp;&emsp;<a href=Login.do>로그인</a>
+&emsp;&emsp;<a href=LogOut.do>로그아웃</a>
 &emsp;&emsp;<a href=index.do>홈으로</a> 
 
 

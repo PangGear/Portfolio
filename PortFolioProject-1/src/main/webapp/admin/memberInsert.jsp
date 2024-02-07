@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib  uri="http://java.sun.com/jstl/core_rt"  prefix="c" %>     
-<c:import url="/WEB-INF/view/include/top.jsp" />
+<c:import url="/include/top.jsp" />
 <style>
 table {
   width:480px ; 
@@ -12,21 +12,28 @@ table {
 <br>
 <div align="center">
 
-<h2>회 원 등 록</h2> 
+<h2> 회원가입 </h2> 
 <form action="/memberInsert.do"  method=post>
 <table border=1  >
-<tr> <td> 회원이름 </td> <td>&nbsp;  <input  type="text" name="name" /> </td> </tr>
-<tr> <td> 암호</td> <td>&nbsp; <input  type="text" name="bcrypt" /> </td> </tr>
-<tr> <td> 전화번호</td> <td>&nbsp; <input  type="text" name="tel" size=15 /> </td> </tr>
-<tr> <td> 주소</td> <td>
+<tr><td> 회원이름 </td><td>&nbsp;<input type="text" name="name" /></td></tr>
+<tr><td> ID </td><td>&nbsp;<input type="text" name="username" /></td></tr>
+<tr><td> 암호</td><td>&nbsp;<input type="text" name="password" /></td></tr>
+<tr><td> 전화번호</td><td>&nbsp;<input type="text" name="tel" size=15 /></td></tr>
+<tr><td> 주소</td><td>
 	&nbsp;<input type="text" name ="postcode"  id="postcode" placeholder="우편번호">
 	<input type="button" onclick="execDaumPostcode()" value="우편번호 찾기"><br>
 	&nbsp;<input type="text" name="roadAddress" id="roadAddress" placeholder="주소" size=50><br>
 	&nbsp;<input type="text" name="detailAddress" id="detailAddress" placeholder="상세주소">
 	<input type="text" name="extraAddress" id="extraAddress" placeholder="참고항목">
-
- </td> </tr>
-<tr> <td> 등급</td> <td>&nbsp; <input  type="text" name="grade" /> </td> </tr>
+</td></tr>
+<tr><td>등급</td><td>
+        <label for="admin">Admin</label>
+        <input type="radio" id="admin" name="role" value="ROLE_ADMIN">
+        <label for="manager">Manager</label>
+        <input type="radio" id="manager" name="role" value="ROLE_MANAGER">
+        <label for="member">Member</label>
+        <input type="radio" id="member" name="role" value="ROLE_MEMBER" checked>
+</td></tr>
 <tr> 
 <td colspan=2 align="center"> 
   <input  type=submit  value="회원가입">
@@ -87,4 +94,4 @@ table {
         }).open();
     }
 </script>
-<c:import url="/WEB-INF/view/include/bottom.jsp" />
+<c:import url="/include/bottom.jsp" />

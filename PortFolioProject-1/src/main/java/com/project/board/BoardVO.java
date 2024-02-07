@@ -5,11 +5,10 @@ import lombok.Data;
 @Data
 public class BoardVO {
 
-	private int id;
+	private int boardIdx;
+	private String username;
 	private String title;
 	private String content;
-	private String reg_id;
-	private String reg_dt;
-	private String upd_dt;
-	
+	private String reg_date;
+	private String upd_date;
 }

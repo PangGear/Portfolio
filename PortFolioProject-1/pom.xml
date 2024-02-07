@@ -94,6 +94,19 @@
     		<artifactId>json-simple</artifactId>
     		<version>1.1.1</version>
 		</dependency>
+		
+		<!-- security 설정 추가하기(1) -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>	
+		
+		<!-- security 설정 추가하기(2) -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-test</artifactId>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 
 	<build>

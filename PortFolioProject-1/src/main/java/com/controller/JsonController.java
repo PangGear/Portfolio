@@ -144,16 +144,15 @@ public class JsonController {
 		model.addAttribute("ch1", vo.getCh1());
 		model.addAttribute("ch2", vo.getCh2());
 		
-		return "/camp/getCampList";
+		return "/camp/getCampList.jsp";
 	}
 	
 	@GetMapping("/getJson.do")
 	String getJson(Model model, JsonVO vo) {
 		
 		model.addAttribute("m",service.getJson(vo));
-		service.cnt();
 		
-		return "/camp/getCamp";
+		return "/camp/getCamp.jsp";
 	}
     
    

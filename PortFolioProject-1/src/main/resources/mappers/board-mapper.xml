@@ -6,14 +6,17 @@
   <select id="getBoardList" parameterType="com.project.board.BoardVO"
                     resultType="com.project.board.BoardVO" >
 
-  select *  from  DBUSER.TB_BOARD
+  select boardIdx,username,title,content,reg_date,upd_date
+  from campboard
  
  </select>
  
  <select id="getBoard" parameterType="com.project.board.BoardVO"
                     resultType="com.project.board.BoardVO" >
 
-  select *  from  DBUSER.TB_BOARD where id = #{id}
+  select boardIdx,username,title,content,reg_date,upd_date  
+  from  campboard 
+  where boardIdx = #{boardIdx}
  
  </select> 
  

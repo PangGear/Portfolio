@@ -15,6 +15,6 @@ public class StartController {
 	@GetMapping("/index.do")
 	String index()	{
 		
-		return "index";
+		return "index.jsp";
 	}
 }
